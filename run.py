@@ -9,6 +9,9 @@ from vlmeval.inference_mt import infer_data_job_mt
 from vlmeval.smp import *
 from vlmeval.utils.result_transfer import MMMU_result_transfer, MMTBench_result_transfer
 
+import logging
+logging.getLogger('transformers').setLevel(logging.ERROR)
+
 
 def parse_args():
     parser = argparse.ArgumentParser()
