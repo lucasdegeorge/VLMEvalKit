@@ -1,6 +1,7 @@
 from vlmeval.vlm import *
 from vlmeval.api import *
 from functools import partial
+from vlmeval.vlm.models_fi.benchmark_models import BenchmarkModel
 
 PandaGPT_ROOT = None
 MiniGPT4_ROOT = None
@@ -14,6 +15,10 @@ VideoChatGPT_ROOT = None
 PLLaVA_ROOT = None
 RBDash_ROOT = None
 LLAVA_V1_7B_MODEL_PTH = 'Please set your local path to LLaVA-7B-v1.1 here, the model weight is obtained by merging LLaVA delta weight based on vicuna-7b-v1.1 in https://github.com/haotian-liu/LLaVA/blob/main/docs/MODEL_ZOO.md with vicuna-7b-v1.1. '
+
+fi_models = {
+    'llama3-llava-next-8b-hf':partial(BenchmarkModel, model_name='llama3-llava-next-8b-hf', compile=True),
+}
 
 video_models = {
     'Video-LLaVA-7B':partial(VideoLLaVA, model_path='LanguageBind/Video-LLaVA-7B'),
@@ -287,6 +292,7 @@ moondream_series={
 supported_VLM = {}
 
 model_groups = [
+    fi_models,
     ungrouped, api_models,
     xtuner_series, qwen_series, llava_series, internvl_series, yivl_series,
     xcomposer_series, minigpt4_series, idefics_series, instructblip_series,
